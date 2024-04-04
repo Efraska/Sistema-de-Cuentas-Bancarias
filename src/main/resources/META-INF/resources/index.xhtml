@@ -9,9 +9,18 @@
 </h:head>
 <h:body>
     <div class="card">
-
-        <div class="card">
-            <p:dataTable value="#{indexControlador.cuentas}" var="cuenta">
+        <h:form id="forma-cuentas">
+            <p:growl id="mensajes" showDetail="true"/>
+            <div class="card">
+                <p:menubar>
+                    <p:menuitem value="Inicio" icon="pi pi-fw pi-user"
+                                update=":forma-cuentas:cuentas-tabla"
+                                actionListener="#{indexControlador.cargarDatos}"/>
+                </p:menubar>
+            </div>
+            <div class="card">
+            <p:dataTable value="#{indexControlador.cuentas}" var="cuenta"
+                    id="cuentas-tabla" widgetVar="cuentasTabla">
                 <f:facet name="header">
                     <div class="flex justify-content-center flex-wrap card-container yellow-container">
                         <div class="flex align-items-center justify-content-center
@@ -41,7 +50,7 @@
 
             </p:dataTable>
         </div>
-
+        </h:form>
     </div>
 </h:body>
 </h:html>
