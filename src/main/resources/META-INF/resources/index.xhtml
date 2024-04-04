@@ -16,6 +16,10 @@
                     <p:menuitem value="Inicio" icon="pi pi-fw pi-user"
                                 update=":forma-cuentas:cuentas-tabla"
                                 actionListener="#{indexControlador.cargarDatos}"/>
+                    <p:menuitem value="Nueva Cuenta" icon="pi pi-fw pi-plus"
+                                actionListener="#{indexControlador.agregarCuenta}"
+                                update=":forma-modal:cuenta-ventana"
+                                oncomplete="PF('ventanaModalCuenta').show()"/>
                 </p:menubar>
             </div>
             <div class="card">
@@ -50,6 +54,37 @@
 
             </p:dataTable>
         </div>
+        </h:form>
+
+        <h:form id="forma-modal">
+            <p:dialog header="Detalles Cuenta" showEffect="fade"
+                      modal="true" widgetVar="ventanaModalCuenta"
+                      responsive="true">
+                <p:outputPanel id="cuenta-ventana" class="ui-fluid">
+                    <div class="field">
+                        <p:outputLabel for="nombre">Nombre</p:outputLabel>
+                        <p:inputText id="nombre"
+                                     value="#{indexControlador.cuentaSeleccionada.nombre}"
+                                     required="true"/>
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="tipoCuenta">Tipo Cuenta</p:outputLabel>
+                        <p:selectOneMenu id="tipoCuenta"
+                                        value="#{indexControlador.cuentaSeleccionada.tipoCuenta}">
+                            <f:selectItem itemLabel="Selecciona" itemValue=""/>
+                            <f:selectItem itemLabel="Ahorro" itemValue="Ahorro"/>
+                            <f:selectItem itemLabel="Credito" itemValue="Credito"/>
+                            <f:selectItem itemLabel="Inversion" itemValue="Inversion"/>
+                        </p:selectOneMenu>
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="saldo">Saldo</p:outputLabel>
+                        <p:inputNumber id="saldo"
+                                       value="#{indexControlador.cuentaSeleccionada.saldo}"/>
+                    </div>
+                </p:outputPanel>
+            </p:dialog>
+
         </h:form>
     </div>
 </h:body>
