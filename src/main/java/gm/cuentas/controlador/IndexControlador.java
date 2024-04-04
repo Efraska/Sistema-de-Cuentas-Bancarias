@@ -20,6 +20,7 @@ public class IndexControlador {
     @Autowired
     CuentaServicio cuentaServicio;
     private List<Cuenta> cuentas;
+    private Cuenta cuentaSeleccionada;
 
     private static final Logger logger =
             LoggerFactory.getLogger(IndexControlador.class);
@@ -32,5 +33,9 @@ public class IndexControlador {
     public void cargarDatos(){
         this.cuentas = cuentaServicio.listarCuentas();
         cuentas.forEach((cuenta) -> logger.info(cuenta.toString()));
+    }
+
+    public void agregarCuenta(){
+        this.cuentaSeleccionada = new Cuenta();
     }
 }
