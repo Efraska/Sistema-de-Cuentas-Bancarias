@@ -52,6 +52,20 @@
                     </h:outputText>
                 </p:column>
 
+                <p:column>
+                    <p:commandButton value="Editar" icon="pi pi-pencil"
+                                    update=":forma-modal:cuenta-ventana"
+                                    oncomplete="PF('ventanaModalCuenta').show()"
+                                    process="@this"
+                                    class="ui-button-primary"
+                                    style="margin-right: .5rem">
+                        <f:setPropertyActionListener
+                            target="#{indexControlador.cuentaSeleccionada}"
+                            value="#{cuenta}"/>
+                        <p:resetInput target=":forma-modal:cuenta-ventana"/>
+                    </p:commandButton>
+                </p:column>
+
             </p:dataTable>
         </div>
         </h:form>
