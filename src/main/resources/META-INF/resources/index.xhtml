@@ -83,6 +83,16 @@
                                        value="#{indexControlador.cuentaSeleccionada.saldo}"/>
                     </div>
                 </p:outputPanel>
+
+                <f:facet name="footer">
+                    <p:commandButton value="Guardar" icon="pi pi-check"
+                                     process="cuenta-ventana @this"
+                                     actionListener="#{indexControlador.guardarCuenta}"/>
+                    <p:commandButton value="Cancelar" icon="pi pi-times"
+                                     onclick="PF('ventanaModalCuenta').hide()"
+                                     class="ui-button-secondary" type="button"/>
+                </f:facet>
+
             </p:dialog>
 
         </h:form>
